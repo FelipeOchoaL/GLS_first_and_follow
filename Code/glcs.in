@@ -1,0 +1,22 @@
+5
+5
+S -> AB|BA|SS|AC|BD
+C -> SB
+D -> SA
+A -> a
+B -> b
+5
+E -> TA
+A -> +TA|epsilon
+T -> FB
+B -> *FB|epsilon
+F -> (E)|id
+1
+S -> S+S|SS|(S)|S*|a
+2
+S -> (L)|a
+L -> L,S|S
+3
+bexpr -> bexpr or bterm|bterm
+bterm -> bterm and bfactor|bfactor
+bfactor -> not bfactor|(bexpr)|true|false
