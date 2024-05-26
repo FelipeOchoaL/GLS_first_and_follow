@@ -1,8 +1,8 @@
 5
 5
-Pr(S) = {}
-Pr(C) = {}
-Pr(D) = {}
+Pr(S) = {a,b}
+Pr(C) = {a,b}
+Pr(D) = {a,b}
 Pr(A) = {a}
 Pr(B) = {b}
 Sig(S) = {$,a,b}
@@ -12,15 +12,15 @@ Sig(A) = {$,a,b}
 Sig(B) = {$,a,b}
 5
 Pr(E) = {}
-Pr(A) = {+,epsilon}
-Pr(T) = {(,i}
-Pr(B) = {*,epsilon}
+Pr(A) = {+,e}
+Pr(T) = {i}
+Pr(B) = {*,e}
 Pr(F) = {(,i}
 Sig(E) = {$,)}
 Sig(A) = {$,)}
-Sig(T) = {+,epsilon}
-Sig(B) = {+,epsilon}
-Sig(F) = {*,epsilon}
+Sig(T) = {$,+,e}
+Sig(B) = {$,+,e}
+Sig(F) = {$,*,e}
 1
 Pr(S) = {(,a}
 Sig(S) = {$,(,),*,+,a}
@@ -28,11 +28,11 @@ Sig(S) = {$,(,),*,+,a}
 Pr(S) = {(,a}
 Pr(L) = {(,a}
 Sig(S) = {$,),,}
-Sig(L) = {),,}
+Sig(L) = {$,),,}
 3
-Pr(bexpr) = {b}
-Pr(bterm) = {b}
-Pr(bfactor) = {(,f,n,t}
-Sig(bexpr) = {$}
-Sig(bterm) = {}
-Sig(bfactor) = {}
+Pr(S) = {a}
+Pr(A) = {b}
+Pr(B) = {(,f,n,t}
+Sig(S) = {$,),o}
+Sig(A) = {$,),a,o}
+Sig(B) = {$,),a,o}

@@ -80,6 +80,7 @@ def compute_follow(producciones, start_symbol, first):
                     if symbol.isupper():
                         before = len(follow[symbol])
                         follow[symbol].update(trailer)
+                        follow[symbol].add('$')
                         if 'ε' in first[symbol]:
                             trailer.update(first[symbol] - {'ε'})
                         else:
@@ -133,3 +134,15 @@ def main(input_file_path, output_file_path):
 input_file_path = 'glcs.in'
 output_file_path = 'pr_sig.out'
 main(input_file_path, output_file_path)
+
+
+# bexpr -> bexpr or bterm|bterm
+# bterm -> bterm and bfactor|bfactor
+# bfactor -> not bfactor|(bexpr)|true|false
+
+# Pr(bexpr) = {b}
+# Pr(bterm) = {b}
+# Pr(bfactor) = {(,f,n,t}
+# Sig(bexpr) = {$}
+# Sig(bterm) = {}
+# Sig(bfactor) = {}
