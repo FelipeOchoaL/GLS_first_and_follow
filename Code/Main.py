@@ -1,22 +1,23 @@
+#Funcion para leer el archivo de entrada
 def leer_glcs(file_path):
     with open(file_path, 'r') as file:
         # Leer el número de casos
-        n = int(file.readline().strip())
+        n = int(file.readline().strip()) # este seria el primer numero que encontramos en el archivo
 
         # Lista para almacenar todos los casos
         casos = []
 
         for _ in range(n):
             # Leer el número de no terminales
-            k = int(file.readline().strip())
+            k = int(file.readline().strip()) # este seria el segundo numero que encontramos en el archivo
 
             # Diccionario para almacenar las producciones de cada no terminal
-            producciones = {}
+            producciones = {} # este seria el diccionario que almacenara las producciones de cada no terminal
 
-            for _ in range(k):
+            for _ in range(k): # este for se encargara de leer las producciones de cada no terminal
                 # Leer cada línea de producción
-                linea = file.readline().strip()
-                no_terminal, produccion = linea.split('->')
+                linea = file.readline().strip() # este linea contiene la produccion de un no terminal
+                no_terminal, produccion = linea.split('->') # aca estamos separando el no terminal de la produccion
                 no_terminal = no_terminal.strip()
                 alternativas = [alt.strip() for alt in produccion.split('|')]
 
@@ -91,28 +92,44 @@ def compute_follow(producciones, start_symbol, first):
     return follow
 
 
-def main(file_path):
-    casos = leer_glcs(file_path)
+def escribir_pr_sig(file_path, casos, first_sets, follow_sets):
+    with open(file_path, 'w') as file:
+        # Escribir el número de casos
+        file.write(f"{len(casos)}\n")
 
-    for index, producciones in enumerate(casos):
-        print(f"Casos {index + 1}:")
-        for nt, prods in producciones.items():
-            print(f"{nt} -> {' | '.join(prods)}")
+        for producciones, first, follow in zip(casos, first_sets, follow_sets):
+            # Escribir el número de no terminales
+            k = len(producciones)
+            file.write(f"{k}\n")
 
+            # Escribir los conjuntos First
+            for nt in producciones:
+                primeros = ','.join(sorted(first[nt]))
+                file.write(f"Pr({nt}) = {{{primeros}}}\n")
+
+            # Escribir los conjuntos Follow
+            for nt in producciones:
+                siguientes = ','.join(sorted(follow[nt]))
+                file.write(f"Sig({nt}) = {{{siguientes}}}\n")
+
+
+def main(input_file_path, output_file_path):
+    casos = leer_glcs(input_file_path)
+
+    first_sets = []
+    follow_sets = []
+
+    for producciones in casos:
         first = compute_first(producciones)
         follow = compute_follow(producciones, list(producciones.keys())[0], first)
 
-        print("\nFirst sets:")
-        for nt in first:
-            print(f"First({nt}) = {first[nt]}")
+        first_sets.append(first)
+        follow_sets.append(follow)
 
-        print("\nFollow sets:")
-        for nt in follow:
-            print(f"Follow({nt}) = {follow[nt]}")
-
-        print("\n" + "=" * 50 + "\n")
+    escribir_pr_sig(output_file_path, casos, first_sets, follow_sets)
 
 
-# Ruta al archivo glcs.in
-file_path = 'glcs.in'
-main(file_path)
+# Rutas a los archivos de entrada y salida
+input_file_path = 'glcs.in'
+output_file_path = 'pr_sig.out'
+main(input_file_path, output_file_path)
