@@ -5,7 +5,8 @@ IDE: PyCharm 2023.3.2 <br>
 # Explicación del codigo:
 **Resumen del Código**
 Este proyecto en Python implementa los algoritmos para calcular los conjuntos FIRST y FOLLOW en la teoría de compiladores. El código se divide <br>
-en varias funciones, cada una con una responsabilidad específica.  <br>
+en varias funciones, cada una con una responsabilidad específica. El codigo lo implementamos de una manera no recursiva , si no atraves de un while  <br>
+en cada una de las funciones para darle una aplicacion diferente al problema.
 
 *Funciones*
 - leer_glcs(file_path) <br>
