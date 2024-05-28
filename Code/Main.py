@@ -33,7 +33,7 @@ def leer_glcs(file_path):
 
 
 def compute_first(producciones):
-    first = {nt: set() for nt in producciones}
+    first = {nt: set() for nt in producciones} #creamos un diccionario y crea una clave para todos los no terminales
 
     # Inicialización
     for nt in producciones:
@@ -80,7 +80,6 @@ def compute_follow(producciones, start_symbol, first):
                     if symbol.isupper():
                         before = len(follow[symbol])
                         follow[symbol].update(trailer)
-                        follow[symbol].add('$')
                         if 'ε' in first[symbol]:
                             trailer.update(first[symbol] - {'ε'})
                         else:
@@ -91,7 +90,7 @@ def compute_follow(producciones, start_symbol, first):
                         trailer = {symbol}
 
     return follow
-
+#funcion para escribir el archivo de salida
 
 def escribir_pr_sig(file_path, casos, first_sets, follow_sets):
     with open(file_path, 'w') as file:

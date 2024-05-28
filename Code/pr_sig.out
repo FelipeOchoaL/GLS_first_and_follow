@@ -11,16 +11,16 @@ Sig(D) = {$,a,b}
 Sig(A) = {$,a,b}
 Sig(B) = {$,a,b}
 5
-Pr(E) = {}
+Pr(E) = {(,i}
 Pr(A) = {+,e}
-Pr(T) = {i}
+Pr(T) = {(,i}
 Pr(B) = {*,e}
 Pr(F) = {(,i}
 Sig(E) = {$,)}
 Sig(A) = {$,)}
-Sig(T) = {$,+,e}
-Sig(B) = {$,+,e}
-Sig(F) = {$,*,e}
+Sig(T) = {$,+,)}
+Sig(B) = {$,+,)}
+Sig(F) = {$,*,+,)}
 1
 Pr(S) = {(,a}
 Sig(S) = {$,(,),*,+,a}
@@ -28,7 +28,7 @@ Sig(S) = {$,(,),*,+,a}
 Pr(S) = {(,a}
 Pr(L) = {(,a}
 Sig(S) = {$,),,}
-Sig(L) = {$,),,}
+Sig(L) = {),,}
 3
 Pr(S) = {a}
 Pr(A) = {b}
